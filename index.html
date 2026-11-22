@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Burger Point</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#14172E">
+</head>
+
+<body>
+
+<div class="closed-screen" id="closed-screen" hidden>
+  <img class="closed-logo" src="Imagenes/Logo/THE BURGER POINT Amarillo.png" alt="The Burger Point">
+  <h2 class="closed-title">Por el momento estamos cerrados</h2>
+  <p class="closed-text">Abrimos de jueves a domingos de <strong>20:00 hs a 00:00 hs</strong>.<br>¡Te esperamos!</p>
+</div>
+
+<main id="app">
+
+    <!-- ============ HOME ============
+       Fondo: agregá tu imagen en el style="" de abajo. Ejemplo:
+         style="--bg-image: url('assets/home-bg.jpg');"
+       Si lo dejás vacío, queda el color navy sólido.
+  -->
+  <section class="screen is-active" data-screen="home">
+    <div class="hero screen-bg" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+
+      <!-- LOGO — placeholder. Reemplazar por:
+           <img class="hero-logo" src="assets/logo.png" alt="The Burger Point">
+      -->
+     <img class="hero-logo" src="Imagenes/Logo/THE BURGER POINT Amarillo.png" alt="The Burger Point">
+
+      <h1 class="hero-heading">Llegaste al punto de la mejor hamburguesa</h1>
+
+      <div class="hero-ctas">
+        <div class="hero-cta">
+         
+          <button class="btn-cta" data-goto="takeaway-location">Take away</button>
+        </div>
+        <div class="hero-cta">
+          
+          <button class="btn-cta" data-goto="delivery-address">Delivery</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TAKE AWAY: UBICACIÓN DEL LOCAL ============
+       Fondo: style="--bg-image: url('assets/takeaway-bg.jpg');"
+  -->
+  <section class="screen screen-bg" data-screen="takeaway-location" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+    <div class="subpage">
+      <button class="back-btn" data-action="back" aria-label="Volver">←</button>
+
+
+
+ 
+      <h2 class="screen-heading">Nos encontramos aquí</h2>
+
+            <!-- Mapa real de Google Maps, pineado en Plaza Moreno, La Plata
+           (ubicación de prueba, no requiere API key). Cuando sepas la
+           dirección real del local, cambiá lo que está después de
+           "q=" por esa dirección, reemplazando espacios por "+". -->
+      <div class="map-card">
+        <iframe
+          class="map-embed"
+          src="https://maps.google.com/maps?q=Ramon+Gomez+y+Guemes,+Lezama+Buenos+Aires,+Argentina&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+        <div class="map-specs">Ramón Gómez esquina Güemes, local 2 — Lezama</div>
+      </div>
+
+      <button class="btn-cta" id="confirm-takeaway-btn">Confirmar ubicación</button>
+    </div>
+  </section>
+
+    <!-- ============ DELIVERY: DIRECCIÓN ============
+       Fondo: style="--bg-image: url('assets/delivery-bg.jpg');"
+  -->
+  <section class="screen screen-bg" data-screen="delivery-address" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+    <div class="subpage">
+      <button class="back-btn" data-action="back" aria-label="Volver">←</button>
+
+      <h2 class="screen-heading">A dónde querés que llegue tu pedido</h2>
+      <form class="address-form" novalidate>
+        <label for="calle">Calle</label>
+        <input type="text" id="calle" class="input-cta" aria-required="true">
+
+        <label for="entrecalles">Entre qué calles</label>
+        <input type="text" id="entrecalles" class="input-cta" aria-required="true">
+
+        <label for="numero">Número de la calle</label>
+        <input type="text" id="numero" class="input-cta" aria-required="true">
+
+        <label for="aclaraciones">Aclaraciones (opcional)</label>
+        <textarea id="aclaraciones" class="input-cta textarea-cta" rows="3"></textarea>
+      </form>
+
+      <p class="form-error" id="delivery-error" hidden>Completá los campos obligatorios para continuar.</p>
+
+      <button class="btn-cta" id="confirm-delivery-btn">Confirmar ubicación</button>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORÍAS ============ -->
+  <section class="screen screen-bg" data-screen="category" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+    <div class="category-page">
+
+      <header class="category-header">
+        <button class="back-btn" data-action="back" aria-label="Volver">←</button>
+        <!-- usá el mismo src que el logo del home -->
+        <img class="category-logo" data-goto="home" src="Imagenes/Logo/THE BURGER POINT Amarillo.png" alt="The Burger Point">
+      </header>
+
+      <div class="category-list">
+        <button class="category-card" data-category="hamburguesas">
+          <span class="category-title">Hamburguesas</span>
+          <span class="category-desc">Descripción de las burgers</span>
+        </button>
+
+          <button class="category-card" data-category="slides">
+          <span class="category-title">Slides</span>
+          <span class="category-desc">Descripción de los slides</span>
+        </button>
+      </div>
+
+    
+    </div>
+  </section>
+
+<!-- ============ MENÚ ============ -->
+  <section class="screen screen-bg" data-screen="menu" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+    <div class="menu-page">
+
+      <header class="category-header">
+        <button class="back-btn" data-action="back" aria-label="Volver">←</button>
+        <img class="category-logo" data-goto="home" src="Imagenes/Logo/THE BURGER POINT Amarillo.png" alt="The Burger Point">
+      </header>
+
+      <div class="menu-tabs">
+        <button class="menu-tab is-active" data-tab="burgers">Burgers</button>
+        <button class="menu-tab" data-tab="slides">Slides</button>
+      </div>
+
+      <div class="menu-grid" id="menu-grid"></div>
+
+    </div>
+
+      <div class="order-bar" id="order-bar" hidden>
+        <button class="order-bar-btn" id="order-bar-btn"></button>
+      </div>
+
+  </section>
+
+  <!-- ============ PEDIDO ============ -->
+  <section class="screen screen-bg" data-screen="order" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+    <div class="order-page">
+
+      <header class="category-header">
+                <button class="back-btn" data-goto="menu" aria-label="Volver">←</button>
+        <img class="category-logo" data-goto="home" src="Imagenes/Logo/THE BURGER POINT Amarillo.png" alt="The Burger Point">
+      </header>
+
+      <div class="order-card" id="order-card">
+
+        <h2 class="order-title">Mi pedido</h2>
+        <div id="order-items"></div>
+
+        <div class="order-subtotal">
+          <span>Subtotal</span>
+          <span id="order-subtotal"></span>
+        </div>
+
+        <button type="button" class="btn-secondary" id="order-add-more">Olvidé agregar algo</button>
+
+        <h3 class="order-heading">Datos del envío</h3>
+               <div class="order-mode-row">
+          <div class="order-mode-info">
+            <p class="order-mode" id="order-mode"></p>
+            <p class="order-address" id="order-address" hidden></p>
+          </div>
+          <button type="button" class="order-edit" id="order-edit-mode" aria-label="Cambiar el modo de entrega">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          </button>
+        </div>
+
+        <p class="order-note" id="order-delivery-note" hidden>
+        <strong>Importante:</strong> El delivery no corre a nuetra cuenta!! SE ABONA EN PUERTA.
+        </p>
+
+        <div class="field">
+          <label for="order-time">Horario de entrega</label>
+          <select id="order-time" class="select-cta select-full" aria-required="true"></select>
+        </div>
+
+        
+        <label class="order-heading" for="order-payment">Forma de pago</label>
+        <div class="field">
+          <select id="order-payment" class="select-cta select-full" aria-required="true"></select>
+        </div>
+
+        <div class="order-grid">
+          <div class="field">
+            <label for="order-name">Nombre</label>
+            <input type="text" id="order-name" class="select-cta" autocomplete="given-name" aria-required="true">
+          </div>
+          <div class="field">
+            <label for="order-surname">Apellido</label>
+            <input type="text" id="order-surname" class="select-cta" autocomplete="family-name" aria-required="true">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="order-phone">Celular</label>
+          <input type="tel" id="order-phone" class="select-cta" autocomplete="tel" inputmode="tel" aria-required="true">
+        </div>
+
+        <p class="form-error" id="order-error" hidden>Completá los campos marcados para enviar tu pedido.</p>
+
+        <button type="button" class="btn-order" id="order-submit-btn"></button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTO ============ -->
+  <section class="screen screen-bg" data-screen="product" style="--bg-image:url('Imagenes/texturas/textura negro y amarillo.png');">
+    <div class="product-page">
+
+      <header class="category-header">
+        <button class="back-btn" data-action="back" aria-label="Volver">←</button>
+        <img class="category-logo" data-goto="home" src="Imagenes/Logo/THE BURGER POINT Amarillo.png" alt="The Burger Point"> 
+      </header>
+
+      <div class="detail-card">
+
+        <div class="detail-photo">
+          <img id="detail-img" alt="" onerror="this.style.display='none'">
+        </div>
+
+        <h2 class="detail-name" id="detail-name"></h2>
+        <p class="detail-desc" id="detail-desc"></p>
+
+           <div class="field" id="field-option">
+          <label for="detail-option">Opción</label>
+          <select id="detail-option" class="select-cta"></select>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="qty-label">Cantidad</span>
+          <div class="qty-stepper" role="group" aria-labelledby="qty-label">
+            <button type="button" class="qty-btn" id="qty-minus" aria-label="Restar uno">−</button>
+            <span class="qty-value" id="detail-qty" aria-live="polite">1</span>
+            <button type="button" class="qty-btn" id="qty-plus" aria-label="Sumar uno">+</button>
+          </div>
+        </div>
+
+        <p class="detail-price" id="detail-price"></p>
+
+        <div class="detail-group" id="group-aderezos">
+          <div class="field">
+            <label for="detail-aderezo">Aderezos</label>
+            <select id="detail-aderezo" class="select-cta select-full"></select>
+          </div>
+          <div class="addon-list" id="addons-aderezos"></div>
+        </div>
+
+        <div class="detail-group" id="group-papas">
+          <div class="field">
+            <label for="detail-papas">Papas</label>
+            <select id="detail-papas" class="select-cta select-full"></select>
+          </div>
+          <div class="addon-list" id="addons-papas"></div>
+        </div>
+
+        <div class="field">
+          <label for="detail-notes">Aclaraciones</label>
+          <textarea id="detail-notes" class="select-cta" rows="4"></textarea>
+        </div>
+
+        <button class="btn-order" id="add-to-order-btn"></button>
+
+      </div>
+    </div>
+  </section>
+
+<footer class="site-footer">
+  <p class="footer-name">The Burger Point</p>
+  <a class="footer-social" href="https://www.instagram.com/the.burger.point/" target="_blank" rel="noopener" aria-label="Instagram de The Burger Point">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+  </a>
+</footer>
+
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
