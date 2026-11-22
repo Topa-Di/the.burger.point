@@ -707,7 +707,7 @@ function afterLocationConfirmed() {
   }
 }
 // ---- Horario de atención ----
-const OPENING_HOUR = 2; // abre a las 20:00
+const OPENING_HOUR = 20; // abre a las 20:00
 const CLOSING_HOUR = 0; // cierra a las 00:00 (0 = medianoche)
 
 function isOpenNow() {
